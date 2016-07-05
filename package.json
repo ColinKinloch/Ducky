@@ -1,0 +1,71 @@
+{
+  "name": "ducky",
+  "version": "1.0.0",
+  "description": "A glTF 3d model viewer.",
+  "main": "server.js",
+  "scripts": {
+    "build": "babel-node --presets es2015 tools/build",
+    "clean": "babel-node --presets es2015 tools/clean",
+    "lint": "babel-node --presets es2015 tools/lint",
+    "serve": "node dist/server"
+  },
+  "repository": "https://github.com/ColinKinloch/Ducky.git",
+  "author": "Colin Kinloch <colin@kinlo.ch>",
+  "license": "ISC",
+  "dependencies": {
+    "font-awesome": "^4.6.3",
+    "gl-matrix": "^2.3.1",
+    "koa": "^2.0.0",
+    "koa-static": "^3.0.0",
+    "lodash": "^4.13.1",
+    "text-encoding": "^0.6.0",
+    "usertiming": "^0.1.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-cli": "^6.10.1",
+    "babel-core": "~6.10.4",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "~6.2.4",
+    "babel-plugin-lodash": "^3.2.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015-native-modules": "^6.6.0",
+    "del": "^2.2.1",
+    "eslint": "^2.13.1",
+    "eslint-config-standard": "^5.3.1",
+    "eslint-plugin-promise": "^1.3.2",
+    "eslint-plugin-standard": "^1.3.2",
+    "fs-extra": "^0.30.0",
+    "glslify-loader": "^1.0.2",
+    "json-loader": "^0.5.4",
+    "lodash-webpack-plugin": "^0.9.2",
+    "minimist": "^1.2.0",
+    "node-sass": "^3.8.0",
+    "opn": "^4.0.2",
+    "postcss": "^5.0.21",
+    "postcss-reporter": "^1.4.1",
+    "postcss-scss": "^0.1.8",
+    "raw-loader": "^0.5.1",
+    "stylelint": "^6.8.0",
+    "stylelint-config-standard": "^10.0.0",
+    "webpack": "2.1.0-beta.13"
+  },
+  "babel": {
+    "compact": true,
+    "plugins": [
+      "lodash"
+    ],
+    "presets": [
+      "es2015-native-modules"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "parser": "babel-eslint",
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
+  }
+}

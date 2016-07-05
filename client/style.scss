@@ -1,0 +1,45 @@
+@fa-font-path: "/fonts";
+@import "font-awesome";
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: inherit;
+  width: inherit;
+  margin: 0;
+  background: gainsboro;
+  &.dark { background: grey; }
+}
+
+.fullscreen {
+  height: inherit;
+  width: inherit;
+  position: fixed;
+  canvas {
+    height: inherit;
+    image-rendering: pixalated;
+    width: inherit;
+  }
+}
+
+.icon-button {
+  @include fa-icon();
+
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 3px;
+
+  &:hover {
+    background: rgba(#fff, 0.6);
+    text-decoration: none;
+  }
+}
+
+#settings {
+  position: fixed;
+  user-select: none;
+  padding: 8px;
+}

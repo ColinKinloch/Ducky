@@ -1,0 +1,9 @@
+# Ducky
+A glTF 3d model viewer.
+
+## Build and run
+```
+npm install
+npm run build
+npm run serve -- --open
+```
