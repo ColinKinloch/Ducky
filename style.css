@@ -2208,7 +2208,10 @@ body {
   position: fixed; }
   .fullscreen canvas {
     height: inherit;
-    image-rendering: pixalated;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;
     width: inherit; }
 
 .icon-button {
