@@ -6,17 +6,23 @@ import fse from 'fs-extra'
 import sass from 'node-sass'
 import webpack from 'webpack'
 
+import nunjucks from 'nunjucks'
+
 import postcss from 'postcss'
 import pcScss from 'postcss-scss'
 import autoprefixer from 'autoprefixer'
 
 import webpackConfig from '../webpack.config'
 
+const argv = require('minimist')(process.argv.slice(2))
+
+const rootDir = argv['rootDir'] || '/'
+
 const errorReject = (resolve, reject) =>
   (error) => { if (error) reject(error); else resolve() }
 
 new Promise((resolve, reject) =>
-  fse.ensureDir('./dist/public', errorReject(resolve, reject)))
+  fse.ensureDir('./dist/public/', errorReject(resolve, reject)))
 .then(() => {
   const webpackJob = new Promise((resolve, reject) => {
     webpack(webpackConfig)
@@ -28,6 +34,21 @@ new Promise((resolve, reject) =>
       })
       console.log(statString)
       resolve()
+    })
+  })
+  
+  const indexJob = new Promise((resolve, reject) => {
+    nunjucks.render('./client/index.html', {
+      root: rootDir
+    }, (error, result) => {
+      console.log(result)
+      if (error) reject(error)
+      resolve(result)
+    })
+  })
+  .then((html) => {
+    return new Promise((resolve, reject) => {
+      fs.writeFile('./dist/public/index.html', html, errorReject(resolve, reject))
     })
   })
 
@@ -61,6 +82,7 @@ new Promise((resolve, reject) =>
 
   return Promise.all([
     webpackJob,
+    indexJob,
     copyJob,
     fontJob,
     styleJob
