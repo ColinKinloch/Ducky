@@ -154,7 +154,7 @@ const drawToFramebuffer = (gl, program, source) => {
     set model (value) {
       this._model = value
       modelBackgroundSelect.value = this.model
-      updateModel(`/${this._model}`)
+      updateModel(`${this._model}`)
       sessionStorage.setItem('graphicSettings', JSON.stringify(this))
     },
     get model () { return this._model },

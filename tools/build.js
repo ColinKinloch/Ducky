@@ -41,7 +41,6 @@ new Promise((resolve, reject) =>
     nunjucks.render('./client/index.html', {
       root: rootDir
     }, (error, result) => {
-      console.log(result)
       if (error) reject(error)
       resolve(result)
     })
